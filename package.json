@@ -182,6 +182,7 @@
     ],
     "afterSign": ".erb/scripts/notarize.js",
     "win": {
+      "verifyUpdateCodeSignature": false,
       "target": {
         "target": "nsis",
         "arch": [
