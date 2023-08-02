@@ -182,10 +182,12 @@
     ],
     "afterSign": ".erb/scripts/notarize.js",
     "win": {
-      "target": "nsis",
-      "arch": [
-        "x64"
-      ],
+      "target": {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      },
       "publisherName": "DWS LLC"
     },
     "nsis": {
