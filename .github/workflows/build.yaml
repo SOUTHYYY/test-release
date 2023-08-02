@@ -25,8 +25,8 @@ jobs:
           # (No need to define this secret in the repo settings)
           github_token: ${{ secrets.TOKEN }}
 
-          windows_certs: ${{ secrets.WIN_CSC_LINK }}
-          windows_certs_password: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
+          # windows_certs: ${{ secrets.WIN_CSC_LINK }}
+          # windows_certs_password: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
 
           args: -w
 
