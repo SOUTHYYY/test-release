@@ -1,0 +1,42 @@
+name: Build/release
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  release:
+    runs-on: [self-hosted, macOS]
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v3
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.14.2'
+      - name: Install packages
+        run: |
+          yarn
+      - name: Build/release Electron app
+        uses: samuelmeuli/action-electron-builder@v1.6.0
+        with:
+          build_script_name: build
+          # GitHub token, automatically provided to the action
+          # (No need to define this secret in the repo settings)
+          github_token: ${{ secrets.TOKEN }}
+
+          windows_certs: ${{ secrets.WIN_CSC_LINK }}
+          windows_certs_password: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
+
+          args: -w
+
+          # If the commit is tagged with a version (e.g. "v1.0.0"),
+          # release the app after building
+          release: true
+        env:
+          CSC_LINK: ${{ secrets.MAC_CERTS }}
+          CSC_KEY_PASSWORD: ${{ secrets.MAC_CERTS_PASSWORD }}
+          WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
+          WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          TARGET_ENV: 'prod'
