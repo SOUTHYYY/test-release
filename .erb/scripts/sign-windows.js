@@ -21,7 +21,7 @@ function sign(configuration) {
     // CodeSignTool can't sign in place without verifying the overwrite with a
     // y/m interaction so we are creating a new file in a temp directory and
     // then replacing the original file with the signed file.
-    childProcess.execSync(`echo java --version`);
+    childProcess.execSync(`java --version`);
     const cstPath = path.join(__dirname, 'CodeSignTool-v1.2.7');
     const tempFile = path.join(TEMP_DIR, `${name}.exe`);
     const setDir = `cd ${cstPath} && ./CodeSignTool.sh`;
