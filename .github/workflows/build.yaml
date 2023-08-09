@@ -25,16 +25,15 @@ jobs:
           # (No need to define this secret in the repo settings)
           github_token: ${{ secrets.TOKEN }}
 
-          windows_certs: ${{ secrets.WIN_CSC_LINK }}
-          windows_certs_password: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
-
           args: -w
 
           # If the commit is tagged with a version (e.g. "v1.0.0"),
           # release the app after building
           release: true
         env:
-          WIN_CSC_LINK: ${{ secrets.WIN_CSC_LINK }}
-          WIN_CSC_KEY_PASSWORD: ${{ secrets.WIN_CSC_KEY_PASSWORD }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           TARGET_ENV: 'prod'
+          WINDOWS_SIGN_CREDENTIAL_ID: ${{secrets.WINDOWS_SIGN_CREDENTIAL_ID}}
+          WINDOWS_SIGN_USER_NAME: ${{secrets.WINDOWS_SIGN_USER_NAME}}
+          WINDOWS_SIGN_USER_PASSWORD: ${{secrets.WINDOWS_SIGN_USER_PASSWORD}}
+          WINDOWS_SIGN_USER_TOTP: ${{secrets.WINDOWS_SIGN_USER_TOTP}}

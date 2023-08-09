@@ -182,14 +182,16 @@
     ],
     "afterSign": ".erb/scripts/notarize.js",
     "win": {
-      "verifyUpdateCodeSignature": false,
+      "sign": "./.erb/scripts/sign-windows.js",
+      "signingHashAlgorithms": [
+        "sha256"
+      ],
       "target": {
         "target": "nsis",
         "arch": [
           "x64"
         ]
-      },
-      "publisherName": "DWS LLC"
+      }
     },
     "nsis": {
       "oneClick": true,
